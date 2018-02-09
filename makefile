@@ -1,4 +1,4 @@
-TARG		= i2c
+TARG		= thermomether
 CC			= avr-gcc
 OBJCOPY		= avr-objcopy
 SRCS		= $(shell find . -name '*.c' -printf './%P ')

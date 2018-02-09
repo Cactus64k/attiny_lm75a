@@ -1,4 +1,4 @@
-UART thermomether
+ATTiny85 UART thermomether
 =====================================================
 
 Details:
@@ -9,6 +9,7 @@ Details:
 3x 10k resistors
 2x 1mf ceramic capacitors for power supply filthering
 1x schottky diode
+1x optional 0ohm resistor
 
 This code provide UART thermomether with 4s period. UART and I2C is software.
 Features:
@@ -18,4 +19,5 @@ Features:
 	lowcost components
 	code size is 3376 bytes (can be less without printf and stdout)
 
-<img src="/cheme.png " width="350"/>
+<img src="/img/cheme.png" width="350"/>
+<img src="/img/photo.png" width="350"/>
