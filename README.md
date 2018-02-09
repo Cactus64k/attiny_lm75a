@@ -18,4 +18,4 @@ Features:
 	lowcost components
 	code size is 3376 bytes (can be less without printf and stdout)
 
-<img src="external_thermomether_lm75/cheme.png " width="350"/>
+<img src="/cheme.png " width="350"/>
