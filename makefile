@@ -8,7 +8,7 @@ LIBS		= -lprintf_flt
 OBJS		= $(SRCS:.c=.o)
 
 CFLAGS		= -mmcu=$(MCU) -std=c99 -Wall -O3
-LDFLAGS		= -mmcu=$(MCU) -Wall -Os -Werror -u vfprintf
+LDFLAGS		= -mmcu=$(MCU) -Wall -Os -Werror #-u vfprintf
  
 all: clean $(TARG) load
  

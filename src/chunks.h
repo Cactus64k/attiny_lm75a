@@ -25,19 +25,4 @@
 	#include <avr/wdt.h>
 	#include <avr/sleep.h>
 
-
-	typedef enum LM75_STATUS
-	{
-		LM75_OK = 0,
-		LM75_DEV_ADDR_FAIL,
-		LM75_WRITE_REG_FAIL,
-		LM75_RESTART_FAIL,
-		LM75_WRITE_FAIL
-	} LM75_STATUS;
-
-
-	LM75_STATUS lm75_get_temp(float* temp);
-	int lm75_sleep();
-	int lm75_wakeup();
-
 #endif /* UART_ATTINY_SRC_CHUNKS_H_ */
