@@ -2,15 +2,10 @@
 #include "suart/suart.h"
 #include "i2c_master/i2c_master.h"
 
-
 ISR(WDT_vect)
 {
 	WDTCR |= _BV(WDIE);
 }
-
-#define LM75_TEMP_REG		0x00
-#define LM75_CONF_REG		0x01
-#define LM75_DEV_ADDR		0x9E
 
 int main()
 {
@@ -26,21 +21,15 @@ int main()
 
 	sei();
 
+	printf("Start device\n");
+
 	if(i2c_init() == EXIT_FAILURE)
 	{
 		while(true)
 		{
 			printf("EROR: I2C bus bad pin state, check and reconnect device\n");
 
-			wdt_reset();
-			wdt_enable(WDTO_4S);
-			WDTCR |= _BV(WDIE);
-
-			set_sleep_mode(SLEEP_MODE_PWR_DOWN);
-			sleep_enable();
-			sleep_bod_disable();
-			sleep_cpu();
-			wdt_disable();
+			sleep_wd(WDTO_4S);
 		}
 	}
 	else
@@ -48,7 +37,12 @@ int main()
 		while(true)
 		{
 			uint16_t data			= 0;
-			I2C_STATUS status		= i2c_read_16bit_from_reg(LM75_DEV_ADDR, LM75_TEMP_REG, &data);
+			I2C_STATUS status		= i2c_write_byte_to_reg(LM75_DEV_ADDR, LM75_CONF_REG, 0x00);		// wakeup
+
+			sleep_wd(WDTO_120MS);
+
+			status				= i2c_read_16bit_from_reg(LM75_DEV_ADDR, LM75_TEMP_REG, &data);
+			status				= i2c_write_byte_to_reg(LM75_DEV_ADDR, LM75_CONF_REG, LM75_SHUTDOWN);		// sleep
 
 			switch(status)
 			{
@@ -86,20 +80,26 @@ int main()
 					break;
 			}
 
-			wdt_reset();
-			wdt_enable(WDTO_4S);
-			WDTCR |= _BV(WDIE);
-
-			set_sleep_mode(SLEEP_MODE_PWR_DOWN);
-			sleep_enable();
-			sleep_bod_disable();
-			sleep_cpu();
-			wdt_disable();
+			sleep_wd(WDTO_4S);
 		}
 	}
 
 
 
 	return EXIT_SUCCESS;
+}
+
+
+void sleep_wd(uint8_t time)
+{
+	wdt_reset();
+	wdt_enable(time);
+	WDTCR |= _BV(WDIE);
+
+	set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+	sleep_enable();
+	sleep_bod_disable();
+	sleep_cpu();
+	wdt_disable();
 }
 

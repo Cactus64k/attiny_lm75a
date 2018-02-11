@@ -25,4 +25,11 @@
 	#include <avr/wdt.h>
 	#include <avr/sleep.h>
 
+	#define LM75_TEMP_REG		0x00
+	#define LM75_CONF_REG		0x01
+	#define LM75_DEV_ADDR		0x9E
+	#define LM75_SHUTDOWN		0x01
+
+	void sleep_wd(uint8_t time);
+
 #endif /* UART_ATTINY_SRC_CHUNKS_H_ */
