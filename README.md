@@ -1,4 +1,4 @@
-ATTiny85 UART thermomether
+ATTiny85 UART thermometer
 =====================================================
 
 Details:
@@ -11,7 +11,7 @@ Details:
 * 1x schottky diode
 * 1x optional 0ohm resistor
 
-This code provide UART thermomether with 4s period. UART and I2C is software.
+This code provide UART thermometer with 4s period. UART and I2C is software.
 Features:
 * low power device(12µA in sleep mode)
 * easy connect to PC(using uart->usb converter)
