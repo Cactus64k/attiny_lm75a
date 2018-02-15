@@ -2,7 +2,7 @@ ATTiny85 UART thermometer
 =====================================================
 
 Details:
-* 1x ATTiny85
+* 1x ATTiny85 (fuses E:FF, H:DF, L:FF)
 * 1x 3686400MHz quartz
 * 1x LM75a
 * 2x 20pf capacitors

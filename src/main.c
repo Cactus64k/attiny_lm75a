@@ -37,7 +37,7 @@ int main()
 		{
 			I2C_STATUS status		= i2c_write_byte_to_reg(LM75_DEV_ADDR, LM75_CONF_REG, 0x00);		// wakeup
 
-			sleep_wd(WDTO_120MS);
+			sleep_wd(WDTO_250MS);
 
 			uint16_t data			= 0;
 			status				= i2c_read_16bit_from_reg(LM75_DEV_ADDR, LM75_TEMP_REG, &data);
