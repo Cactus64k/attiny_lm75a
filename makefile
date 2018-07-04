@@ -8,7 +8,7 @@ LIBS		= -lprintf_flt
 OBJS		= $(SRCS:.c=.o)
 
 CFLAGS		= -mmcu=$(MCU) -std=c99 -Wall -O3
-LDFLAGS		= -mmcu=$(MCU) -Wall -Os -Werror #-u vfprintf
+LDFLAGS		= -mmcu=$(MCU) -Wall -Os -Werror -u vfprintf
  
 all: clean $(TARG) load
  
@@ -31,3 +31,5 @@ erase:
 eeprom_read:
 	avrdude -c $(PROGR) -p $(MCU) -U eeprom:r:eeprom.hex:i
 
+write_fuse:
+	avrdude -c $(PROGR) -p $(MCU) -U lfuse:w:0xfd:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m 

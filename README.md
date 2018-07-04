@@ -3,14 +3,14 @@ ATTiny85 UART thermometer
 
 Details:
 * 1x ATTiny85 (fuses E:FF, H:DF, L:FF)
-* 1x 3686400MHz quartz
+* 1x 3.686400MHz quartz
 * 1x LM75a
 * 2x 12-20pf capacitors
 * 2x 10-4.7k resistors for i2c pull-up
 * 1x 10k resistors
 * 2x 0.5-1mf ceramic capacitors for power supply filthering
 * 1x schottky diode
-* 1x optional 0ohm resistor
+* 1x 100ohm resistor
 
 This code provide UART thermometer with 4s period. UART and I2C is software.
 Features:
